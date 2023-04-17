@@ -102,6 +102,7 @@ class BinarySearchTree {
             const right = node.right;
             node = node.right.left;
             node.right = right;
+            node.right.left = null;
             return node;
           }
         }
@@ -110,13 +111,30 @@ class BinarySearchTree {
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return min(this.root());
+
+    function min(node) {
+
+      if (!node) return null;
+
+      if (!node.left) return node.data;
+
+      return min(node.left);
+    }
+
   }
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+
+    return max(this.root());
+
+    function max(node) {
+      if (!node) return false;
+
+      if (!node.right) return node.data;
+
+      return max(node.right);
+    }
   }
 }
 
